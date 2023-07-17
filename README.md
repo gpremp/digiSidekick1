@@ -2,7 +2,7 @@ step 1
 clone the git repository in your computer
 
 step 2
-run "npm instal" in server and user-management-app folder to install the required node moudeles
+run "npm instal" in server and user-management-app folder to install the required node modules
 
 step 3
 open cmd in the server and user-management-app folder
