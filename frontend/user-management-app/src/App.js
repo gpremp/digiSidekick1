@@ -11,7 +11,7 @@ import UpdatePerson from './component/update-person';
 
 function App() {
   return (
-    <div style={{ backgroundImage: `url(${Bgimg})`, position: 'fixed',top: 0, left: 0, width: '100%', height: '100%' }}>
+    <div style={{ backgroundImage: `url(${Bgimg})`,top: 0, left: 0, width: '100%', height: '100%' }}>
     <BrowserRouter>
     <Routes>
     <Route path='/' element={<Home/>}/>

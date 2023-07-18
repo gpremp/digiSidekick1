@@ -137,7 +137,7 @@ function UserDashboard (){
         </Container>
       </Navbar>
 
-      <div className="container">
+      <div className="container" style={{ overflow:'auto' }}>
                 <div className="row justify-content-center">
                     <div className="col-11">
                         <div class="card-header">
