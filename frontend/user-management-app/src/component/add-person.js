@@ -74,7 +74,7 @@ const validate = (values) => {
       isSubmit = false;
       errors.age = "age is in nagative";
     }
-    if (values.phoneNo.length!=10) {
+    if (values.phoneNo.length!==10) {
         isSubmit = false;
         errors.phoneNo = "Phone number shoule be 10 digit";
       }

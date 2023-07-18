@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Swal from 'sweetalert2';
-import '../static/css/user-dashboard.css';
+import DataTable from "react-data-table-component";
 
 function UserDashboard (){
     const navigate = useNavigate();
@@ -66,6 +66,63 @@ function UserDashboard (){
           })
     }
 
+    const columns = [
+        {
+            name: 'Name',
+            selector: row => row.name,
+        },
+        {
+            name: 'Age',
+            selector: row => row.age,
+        },
+        {
+            name: 'Phone',
+            selector: row => row.phoneNo,
+        },
+        {
+            name: 'Email',
+            selector: row => row.email,
+        },
+        {
+            name: 'Action',
+            selector: row => <><Link to={'/dashboard/person/update'} state={{ person: row }} class="btn btn-success active"
+            role="button" aria-pressed="true">Edit</Link>
+            <button onClick={(e)=>deletePerson(row._id)} class="btn btn-danger"
+            role="button" aria-pressed="true">Delete</button></>
+        },
+        
+    ];
+
+    const tableStyle = {
+        rows: {
+            style: {
+                backgroundColor: 'grey',
+            },
+        },
+        headRow: {
+            style: {
+                fontSize: '27px',
+                color: 'white',
+                backgroundColor: '#878282',
+			minHeight: '52px',
+			borderBottomWidth: '1px',
+			borderBottomColor: 'white',
+			borderBottomStyle: 'solid',
+            },
+        },
+        pagination: {
+            style: {
+                color: 'white',
+                fontSize: '13px',
+                minHeight: '56px',
+                backgroundColor: '#878282',
+                borderTopStyle: 'solid',
+                borderTopWidth: '1px',
+                borderTopColor: 'white',
+            },
+        }    
+    }
+
     return(
         <div>
             <Header/>
@@ -86,59 +143,15 @@ function UserDashboard (){
                         <div class="card-header">
                             <h3>All Persons</h3>
                         </div>
-                        <div class="outer-wrapper">
-                        <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <p>Name</p>
-                                    </th>
-                                    <th>
-                                        <p>Age</p>
-                                    </th>
-                                    <th>
-                                        <p>Phone</p>
-                                    </th>
-                                    <th>
-                                        <p>Email</p>
-                                    </th>
-                                    <th className='action'>
-                                        <p>Edit</p>
-                                    </th>
-                                    <th className='action'>
-                                        <p>Delete</p>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    persons.map(
-                                        person =>
-                                            <tr key={person.id}>
-                                                <td><p>{person.name}</p></td>
-                                                <td><p>{person.age}</p></td>
-                                                <td><p>{person.phoneNo}</p></td>
-                                                <td><p>{person.email}</p></td>
-                                                <td className='action'>
-                                                    <Link to={'/dashboard/person/update'} state={{ person: person }} class="btn btn-success active"
-                                                        role="button" aria-pressed="true">Edit</Link>
-                                                </td>
-                                                <td className='action'>
-                                                <button onClick={(e)=>deletePerson(person._id)} class="btn btn-danger"
-                                                         role="button" aria-pressed="true">Delete</button>
-                                                </td>
-                                            </tr>
-
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                        </div>
-                        </div>
-                    </div>
+                        <DataTable
+                         columns={columns}
+                         data={persons}
+                         customStyles={tableStyle}
+                         pagination
+                        />
                 </div>
             </div>
+        </div>
         </div>
     )
 }

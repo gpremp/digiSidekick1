@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import '../static/css/add-person.css';
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -78,7 +78,7 @@ function UpdatePerson(){
       isSubmit = false;
       errors.age = "age is in nagative";
     }
-    if (values.phoneNo.length!=10) {
+    if (values.phoneNo.length!==10) {
         console.log(values.phoneNo.length)
         isSubmit = false;
         errors.phoneNo = "Phone number shoule be 10 digit";

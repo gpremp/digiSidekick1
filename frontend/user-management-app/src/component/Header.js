@@ -1,8 +1,7 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import { isLoggedIn,isLogOut } from '../auth/login-auth';
 function Header(){
